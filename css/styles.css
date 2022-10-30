@@ -12,6 +12,7 @@
     --color-border-portfolio: #EEEEEE;
     --color-bg: #C4C4C4;
     --color-icon: #AFB1B8;
+    --anim-trans: 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 body {
@@ -115,6 +116,8 @@ img {
     font-size: 14px;
     line-height: 1.14;
     letter-spacing: 0.02em;
+
+    transition: color var(--anim-trans);
 }
 
 .site-nav .link:hover,
@@ -122,13 +125,22 @@ img {
     color: var(--accent-color);
 }
 
+.site-nav .link.current {
+    color: var(--accent-color);
+    position: relative;
+    padding-top: 32px;
+    padding-bottom: 32px;
+}
+
 .contact-nav .link {
     color: var(--primary-text-color);
 
-        font-weight: 500;
-        font-size: 14px;
-        line-height: 1.14;
-        letter-spacing: 0.02em;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 1.14;
+    letter-spacing: 0.02em;
+
+    transition: color var(--anim-trans);
 }
 
 .contact-nav .link:hover,
@@ -136,29 +148,40 @@ img {
     color: var(--accent-color);
 }
 
-.site-nav .link.current {
-    color: var(--accent-color);
-}
+/* Іконки в навігації-контакти */
 
-/* Іконки в навігації */
 .icon-link {
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 10px;
     fill: var(--primary-text-color);
+    transition: fill var(--anim-trans);
 }
 
 .icon-link:hover,
 .icon-link:focus {
     fill: var(--accent-color);
-}
+}   
+
+
+
+/* синяя полоска в меню */
+
+.site-nav .link.current::after {
+    position: absolute;
+    bottom: -1px;
+
+    content: '';
+    display: block;
+    width: 100%;
+    height: 4px;
+    background: #2196F3;
+    border-radius: 2px; 
+} 
+
 
 /* Герой */
-/* .hero {
-    text-align: center;
-    padding: 200px 200px;
-} */
 
 .hero-bg {
     text-align: center;
@@ -208,6 +231,11 @@ img {
     line-height: 1.87;
     letter-spacing: 0.06em;
 
+    transition: background-color var(--anim-trans);
+
+    /* transition-property: background-color;
+    transition-duration: 250ms;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1); */
 }
 .button:hover, .button:focus {
     background-color: var(--accent-color-button);
@@ -306,6 +334,31 @@ img {
     width: calc((100% - 60px) / 3);
 }
 
+
+.product-thum-label {
+        position: absolute;
+        left: 0;
+        bottom: 0; 
+        width: 100%;
+        height: 70px;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        font-weight: 700;
+        font-size: 14px;
+        line-height: 1.14;
+        text-transform: uppercase;
+        color: var(--primary-white-color);
+        background-color: rgba(47, 48, 58, 0.8);
+}
+
+.product-thum {
+    position: relative;
+}
+
+
 /* Команда */
 .team {
     display: flex;
@@ -362,6 +415,8 @@ img {
     align-items: center;
     justify-content: center;
     fill: var(--color-icon);
+
+    transition: background-color var(--anim-trans), fill var(--anim-trans);
 }
 
 .soc-link:hover, .soc-link:focus {
@@ -370,7 +425,8 @@ img {
 }
 
 
-/* Клієнти */
+/* Постійні клієнти */
+
 .clients-list {
     display: flex;
     gap: 30px;
@@ -390,6 +446,7 @@ img {
     align-items: center;
     justify-content: center;
     fill: var(--color-icon);
+    transition: border-color var(--anim-trans), fill var(--anim-trans);
 }
 
 .clients-link:hover, .clients-link:focus {
@@ -430,6 +487,7 @@ img {
     color: rgba(255, 255, 255, 0.6);
     
     font-style: normal;
+    transition: color var(--anim-trans);
 }
 
 .footer-contact:hover,
@@ -467,6 +525,7 @@ img {
     align-items: center;
     justify-content: center;
     fill: var(--primary-white-color);
+    transition: background-color var(--anim-trans), fill var(--anim-trans);
 }
 
 .footer-link:hover,
@@ -479,6 +538,59 @@ img {
     display: flex;
     gap: 70px;
     align-items: baseline;
+}
+
+/* Модальное окно */
+.backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+.backdrop.is-hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.modal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    min-width: 528px;
+    min-height: 581px;
+
+    background-color: var(--primary-white-color);
+    border-radius: 4px;
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 2px 1px rgba(0, 0, 0, 0.2);
+}
+
+.modal-button-close {
+    width: 30px;
+    height: 30px;
+    background-color: #FFFFFF;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 50%;
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    fill: #000;
+
+    transition: border-color var(--anim-trans), fill var(--anim-trans);
+}
+
+.modal-button-close:hover,
+.modal-button-close:focus {
+    border-color: var(--accent-color);
+    fill: var(--accent-color);
 }
 
 /* Стили для portfolio.html */
@@ -502,6 +614,8 @@ img {
     font-weight: 500;
     font-size: 16px;
     line-height: 1.62;
+
+    transition: background-color var(--anim-trans), color var(--anim-trans), box-shadow var(--anim-trans);
 }
 .button-second:hover,
 .button-second:focus {
@@ -530,12 +644,13 @@ img {
 
 .cards-item {
     width: calc((100% - 60px) / 3);
+    transition: box-shadow var(--anim-trans);
 }
 
-.cards-links:hover, .cards-links:focus {
-    display: block;
+.cards-item:hover, .cards-item:focus {
     box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.06), 1px 4px 6px rgba(0, 0, 0, 0.16);
 }
+
 
 .section-names {
     color: var(--title-text-color);
@@ -558,3 +673,48 @@ img {
     border-top: 1px solid transparent;
     padding: 20px 24px;
 }
+
+.tech-im {
+position: relative;
+}
+
+/* синий фон на карточке*/
+
+.techno-card {
+    position: relative;
+    overflow: hidden; 
+}
+
+.tech-overall {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+
+    background-color: rgba(33, 150, 243, 0.9);
+    transform: translateY(100%);
+    transition: transform var(--anim-trans);
+}
+
+.cards-item:hover .tech-overall, 
+.cards-item:focus .tech-overall {
+    transform: translateY(0);
+}  
+
+
+.tech-text {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding: 63px 24px;
+
+    font-size: 18px;
+    line-height: 1.56;
+    letter-spacing: 0.03em;
+    color: var(--primary-white-color);
+}
+
+

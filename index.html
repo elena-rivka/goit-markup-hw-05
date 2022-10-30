@@ -29,7 +29,9 @@
             ><span class="logo-accent">Web</span>Studio</a
           >
           <ul class="site-nav list">
-            <li><a class="link current" href="./index.html">Студія</a></li>
+            <li class="test-li">
+              <a class="link current" href="./index.html">Студія</a>
+            </li>
             <li><a class="link" href="./portfolio.html">Портфоліо</a></li>
             <li><a class="link" href="#">Контакти</a></li>
           </ul>
@@ -58,7 +60,9 @@
       <div class="hero-bg">
         <section class="hero">
           <h1 class="hero-title">Ефективні рішення для вашого бізнесу</h1>
-          <button type="button" class="button">Замовити послугу</button>
+          <button type="button" class="button" data-modal-open>
+            Замовити послугу
+          </button>
         </section>
       </div>
 
@@ -123,28 +127,37 @@
           <h2 class="section-title">Чим ми займаємося</h2>
           <ul class="img-case list">
             <li class="item-case">
-              <img
-                src="./images/box.jpg"
-                alt="Десктопні додатки"
-                width="370"
-                height="294"
-              />
+              <div class="product-thum">
+                <img
+                  src="./images/box.jpg"
+                  alt="Десктопні додатки"
+                  width="370"
+                  height="294"
+                />
+                <p class="product-thum-label">Десктопні додатки</p>
+              </div>
             </li>
             <li class="item-case">
-              <img
-                src="./images/box2.jpg"
-                alt="Мобільні додатки"
-                width="370"
-                height="294"
-              />
+              <div class="product-thum">
+                <img
+                  src="./images/box2.jpg"
+                  alt="Мобільні додатки"
+                  width="370"
+                  height="294"
+                />
+                <p class="product-thum-label">Мобільні додатки</p>
+              </div>
             </li>
             <li class="item-case">
-              <img
-                src="./images/box3.jpg"
-                alt="Дизайнерські рішення"
-                width="370"
-                height="294"
-              />
+              <div class="product-thum">
+                <img
+                  src="./images/box3.jpg"
+                  alt="Дизайнерські рішення"
+                  width="370"
+                  height="294"
+                />
+                <p class="product-thum-label">Дизайнерські рішення</p>
+              </div>
             </li>
           </ul>
         </div>
@@ -448,5 +461,17 @@
         </div>
       </footer>
     </div>
+    <!-- Модальное окно -->
+    <div class="backdrop is-hidden" data-modal>
+      <div class="modal">
+        <button class="modal-button-close" data-modal-close>
+          <svg class="modal-button" width="18" height="18">
+            <use href="./images/logo.svg#icon-close-black"></use>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <script src="./js/modal.js"></script>
   </body>
 </html>
