@@ -630,6 +630,7 @@ img {
     gap: 8px;
     margin-bottom: 50px;
 }
+
 /* Секція карток */
 .portfolio {
     padding-top: 94px;
@@ -674,34 +675,8 @@ img {
     padding: 20px 24px;
 }
 
-.tech-im {
-position: relative;
-}
 
 /* синий фон на карточке*/
-
-.techno-card {
-    position: relative;
-    overflow: hidden; 
-}
-
-.tech-overall {
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 100%;
-    height: 100%;
-
-    background-color: rgba(33, 150, 243, 0.9);
-    transform: translateY(100%);
-    transition: transform var(--anim-trans);
-}
-
-.cards-item:hover .tech-overall, 
-.cards-item:focus .tech-overall {
-    transform: translateY(0);
-}  
-
 
 .tech-text {
     position: absolute;
@@ -715,6 +690,32 @@ position: relative;
     line-height: 1.56;
     letter-spacing: 0.03em;
     color: var(--primary-white-color);
+} 
+
+.tech-card {
+    position: relative;
+    overflow: hidden;
+}
+.tec-tex {
+    position: absolute;
+    top: 0;
+    padding: 63px 24px;
+
+    font-style: normal;
+    font-size: 18px;
+    line-height: 1.56;
+    letter-spacing: 0.03em;
+    color: var(--primary-white-color);
+
+    background-color: rgba(33, 150, 243, 0.9);
+    height: 100%;
+    transform: translateY(100%);
+    transition: transform var(--anim-trans);
+}
+
+.cards-item:hover .tec-tex, 
+.cards-item:focus .tec-tex {
+    transform: translateY(0);
 }
 
 
